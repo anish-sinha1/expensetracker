@@ -26,7 +26,9 @@ const exampleExpenses: expenseTemplate[] = [
 function App() {
   const [expenses, setExpenses] = useState(exampleExpenses);
   const addExpenseHandler = (expense: expenseTemplate) => {
-    setExpenses([expense, ...expenses]);
+    setExpenses((currentState) => {
+      return [expense, ...currentState];
+    });
   };
 
   return (

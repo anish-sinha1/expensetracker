@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import expenseTemplate from "../templates/expenseTemplate";
 import classes from "./ExpenseForm.module.css";
 const ExpenseForm: React.FC<{
-  onSaveExpenseData: (enteredExpenseData: {}) => void;
+  onSaveExpenseData: (enteredExpenseData: expenseTemplate) => void;
 }> = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -22,8 +23,9 @@ const ExpenseForm: React.FC<{
     event.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
+      id: enteredTitle,
     };
     props.onSaveExpenseData(expenseData);
     setEnteredTitle(""); //override what the user wrote and clear the input
