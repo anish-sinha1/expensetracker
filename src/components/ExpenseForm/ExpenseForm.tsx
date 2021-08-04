@@ -3,6 +3,7 @@ import expenseTemplate from "../templates/expenseTemplate";
 import classes from "./ExpenseForm.module.css";
 const ExpenseForm: React.FC<{
   onSaveExpenseData: (enteredExpenseData: expenseTemplate) => void;
+  onCancel: () => void;
 }> = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -57,6 +58,9 @@ const ExpenseForm: React.FC<{
         </div>
       </div>
       <div className={classes["new-expense__actions"]}>
+        <button type="button" onClick={props.onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
